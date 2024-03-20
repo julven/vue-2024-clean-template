@@ -41,7 +41,8 @@ export default {
             console.log(newVal, oldVal, currentRoute.value, back, current)
 
             if(newVal && currentRoute.value == loginRoute) {
-                router.replace(back.includes("/account/login") ? "/" : back)
+                if(back != null) router.replace(back.includes("/account/login") ? "/" : back)
+                else router.replace("/")
             }
 
             if(!newVal) {
