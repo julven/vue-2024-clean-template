@@ -33,7 +33,8 @@
 <script>
     import { useStore } from "vuex"
     import { onMounted, ref } from "vue"
-    import { useRouter } from "vue-router"
+    import { useRouter, useRoute } from "vue-router"
+    
 
 
 
@@ -48,12 +49,17 @@
 
             let store = useStore()
             let router = useRouter();
+            let route = useRoute();
             let search = ref("")
             let list = ref([])
 
             onMounted ( () => {
-                console.log(store.state.list.list)
-                resetSearch();
+                console.log(route.params.search)
+                if(route.params.search) {
+                    search.value = route.params.search
+                    find()
+                }
+                else resetSearch();
             })
 
             let addPerson = () => {
@@ -63,14 +69,18 @@
 
             let find = () => {
                 console.log(search.value)
-                if(search.value != "")
-                list.value = [...store.state.list.list.filter(x => x.fname.includes(search.value) || x.lname.includes(search.value) ) ];
+                if(search.value != "") {
+                    list.value = [...store.state.list.list.filter(x => x.fname.includes(search.value) || x.lname.includes(search.value) ) ];
+                    router.push("/list/"+search.value)
+                }
+                
                 else resetSearch()
             } 
 
             let resetSearch = () => {
                 search.value = ""
                 list.value = [...store.state.list.list]
+                router.push("/list")
             }
 
             return {

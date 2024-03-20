@@ -20,6 +20,7 @@ let router = createRouter({
         { path: "/", name: "HOME", component: HomePage, children: []},
         { path: "/list", name: null, children: [
             { path: "", name: "LIST", component: ListPage, children: [], },
+            { path: ":search", name: "LIST_SEARCH", component: ListPage, children: [], },
             { path: "view/:id", name: "LIST_VIEW", component: ListViewPage, children: [], },
             { path: "edit/:id", name: "LIST_EDIT", component: ListEditPage, children: [], },
             { path: "add", name: "LIST_ADD", component: ListAddPage, children: [], }

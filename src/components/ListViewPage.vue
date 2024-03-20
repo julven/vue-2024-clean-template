@@ -26,7 +26,7 @@
         </tbody>
     </table>
     <router-link :to="`/list/edit/${person.id}`">Edit</router-link> <br/>
-    <router-link to="/list">Back</router-link>
+    <a href="#/" @click.prevent="router.go(-1)">Back</a>
  </template>
  <script>
     import { useStore } from "vuex"
@@ -66,7 +66,8 @@
             }
  
              return {
-                person
+                person,
+                router
              }
          }
      }
