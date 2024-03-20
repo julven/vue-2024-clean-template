@@ -8,6 +8,7 @@ import AccountEditPage from "./AccountEditPage.vue"
 import ListViewPage from "./ListViewPage.vue"
 import ListEditPage from "./ListEditPage.vue"
 import ListAddPage from "./ListAddPage.vue"
+import NotFoundPage from "./NotFoundPage.vue"
 
 
 
@@ -28,7 +29,7 @@ let router = createRouter({
             { path: "login", name: "ACCOUNT_LOGIN", component: AccountLoginPage, children: [], },
             { path: "edit", name: "ACCOUNT_EDIT", component: AccountEditPage, children: [], },
         ]},
-        { path: "/:pathMatch(.*)*", component: { template: `<div><h3>Page does not exist</h3></div>` } },
+        { path: "/:pathMatch(.*)*", name: "NOT_FOUND", component: NotFoundPage },
     ]
 
 })
