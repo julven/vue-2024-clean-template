@@ -56,7 +56,7 @@
                 
                 let thePerson = store.state.list.list.filter( x => x.id == id );
                 if(thePerson.length != 0) {
-                    person.value = thePerson[0];
+                    person.value = {...thePerson[0]};
                     console.log(person.value)
                     return;
                 }

@@ -63,7 +63,7 @@
             })
 
             let addPerson = () => {
-                store.dispatch("person/action", {action: "resetPerson", payload: {}});
+                
                 router.push({path: "/list/add"})
             }
 

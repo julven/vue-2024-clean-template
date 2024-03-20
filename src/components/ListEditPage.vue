@@ -32,7 +32,8 @@
                 let result = store.state.list.list.filter(x => x.id ==route.params.id)
                 console.log(result[0])
                 if(result.length != 0) {
-                    store.dispatch( "person/action", {action: "setPerson", payload: result[0]})
+                    let copy = {...result[0]}
+                    store.dispatch( "person/action", {action: "setPerson", payload: copy})
                     console.log(store.state.person)
                     return;
                 }
@@ -49,7 +50,8 @@
                 console.log(valid)
                 
                 if(valid) {
-                    await store.dispatch("list/action", {action: "updateList", payload: store.state.person})
+                    let person = {...store.state.person}
+                    await store.dispatch("list/action", {action: "updateList", payload: person})
                     alert("person updated")
                     router.go(-1);
                     return;

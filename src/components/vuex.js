@@ -56,7 +56,7 @@ const vuexPerson = {
     },
     mutations: {
         setPerson: (state, payload) => {
-            // c
+          
             Object.keys(state).forEach(x => {
                 if(x in state) {
                     // console.log(state[x], payload[x])
@@ -82,7 +82,7 @@ const vuexPerson = {
             return  new Promise (resolve => {
                 // console.log(action, payload)
                 commit(action, payload)
-                resolve;
+                resolve();
             })
         }
     }

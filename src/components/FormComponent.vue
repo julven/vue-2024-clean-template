@@ -3,22 +3,22 @@
         <tbody>
             <tr>
                 <td>First Name</td>
-                <td><input :value="person.fname" @input="updatePerson('fname', $event.target.value)"/></td>
+                <td><input :value="person.fname" @input="updateField('fname', $event.target.value)"/></td>
             </tr>
             <tr>
                 <td>Last Name</td>
-                <td><input  :value="person.lname" @input="updatePerson('lname', $event.target.value)"/></td>
+                <td><input  :value="person.lname" @input="updateField('lname', $event.target.value)"/></td>
             </tr>
             <tr>
                 <td>Gender</td>
                 <td>
-                    <input type="radio" name="gender" value="male" :checked="person.gender == 'male'" @change="updatePerson('gender', $event.target.value)"/> Male
-                    <input type="radio" name="gender" value="female" :checked="person.gender == 'female'" @change="updatePerson('gender', $event.target.value)"/> Female
+                    <input type="radio" name="gender" value="male" :checked="person.gender == 'male'" @change="updateField('gender', $event.target.value)"/> Male
+                    <input type="radio" name="gender" value="female" :checked="person.gender == 'female'" @change="updateField('gender', $event.target.value)"/> Female
                 </td>
             </tr>
             <tr>
                 <td>Birthday</td>
-                <td><input type="date" :value="person.bday" @input="updatePerson('bday', $event.target.value)"/></td>
+                <td><input type="date" :value="person.bday" @input="updateField('bday', $event.target.value)"/></td>
             </tr>
         </tbody>
     </table>
@@ -28,7 +28,7 @@
 <script>
 
     import { useStore } from "vuex"
-    import { onMounted,  computed} from "vue"
+    import { onMounted } from "vue"
 
 
 
@@ -51,14 +51,14 @@
                
             })
 
-            let updatePerson = (field, value) => {
+            let updateField = (field, value) => {
                 // console.log(field, value)
                 store.dispatch("person/action", {action: "updatePerson", payload:{field, value}})
             }
 
             return {
-                person: computed(() => store.state.person),
-                updatePerson,
+                person: store.state.person,
+                updateField,
                 
             }
         }

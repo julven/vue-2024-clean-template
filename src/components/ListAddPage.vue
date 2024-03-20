@@ -10,6 +10,7 @@
     import { useRouter } from "vue-router"
     import { useStore} from "vuex"
     import { reusable } from "./reusables.js"
+    import { onMounted } from "vue"
 
     export default {
 
@@ -43,6 +44,10 @@
 
                 alert("all fields must not be empty")
             }
+
+            onMounted( () => {
+                store.dispatch("person/action", {action: "resetPerson", payload: {}});
+            })
 
             return {
                 router,
